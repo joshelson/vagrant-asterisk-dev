@@ -24,7 +24,7 @@ Vagrant.configure(2) do |config|
     asteriskdev.vm.hostname = "asterisk.dev.vm"
 
     # Check if this is the first run
-    if Dir.glob("#{File.dirname(__FILE__)}/.vagrant/machines/asteriskdev/*").empty?
+    if Dir.glob("#{File.dirname(__FILE__)}/.vagrant/machines/asteriskdev/*").empty? || ARGV[1] == '--provision'
       print "Gerrit Username: "
       gerritusername = STDIN.gets.chomp
       print "Full Name: "
