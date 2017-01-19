@@ -69,7 +69,6 @@ sudo chmod -R 775 ~/dev/asterisk
 
 sudo pip install git-review
 
-ssh -T gerrit.asterisk.org  -p 29418 -o StrictHostKeyChecking=no
 
 mkdir -p ~/dev/asterisk/
 cd ~/dev/asterisk/
@@ -96,8 +95,11 @@ echo "* Installing Asterisk"
 sudo chmod 600 /home/vagrant/.ssh/config 
 
 cd ~/dev/asterisk
+ssh -T gerrit.asterisk.org  -p 29418 -o StrictHostKeyChecking=no
 git clone -b 13 ssh://asterisk/asterisk asterisk-13
+
 cd asterisk-13
+ssh -T gerrit.asterisk.org  -p 29418 -o StrictHostKeyChecking=no
 
 gerrituser=$(cat /tmp/gerritusername)
 
