@@ -43,6 +43,8 @@ Vagrant.configure(2) do |config|
 
     asteriskdev.vm.provider "virtualbox" do |vb|
        vb.name = "Asterisk Development and Test Environment"
+         vb.memory = 1024
+         vb.cpus = 2
     end
 
   end
