@@ -84,9 +84,9 @@ cd starpy
 sudo python setup.py install
 
 cd ~/dev/asterisk/testsuite
-wget https://github.com/SIPp/sipp/archive/v3.5.1.tar.gz
-tar -zxvf v3.5.1.tar.gz
-cd sipp-3.5.1
+wget https://github.com/SIPp/sipp/archive/v3.4.1.tar.gz
+tar -zxvf v3.4.1.tar.gz
+cd sipp-3.4.1
 ./build.sh --with-pcap --with-openssl
 sudo make install
 
