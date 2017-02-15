@@ -95,7 +95,7 @@ gerrituser=$(cat /tmp/gerritusername)
 sudo chmod 600 /home/vagrant/.ssh/config 
 
 cd ~/dev/asterisk
-ssh -T gerrit.asterisk.org  -p 29418 -o StrictHostKeyChecking=no
+ssh -T $gerrituser@gerrit.asterisk.org  -p 29418 -o StrictHostKeyChecking=no
 git clone -b 13 ssh://$gerrituser@gerrit.asterisk.org:29418/asterisk asterisk-13
 
 cd asterisk-13
