@@ -14,6 +14,9 @@ if [ ! -d ~/.vim/bundle/vim-multiple-cursors ]; then
     git clone git://github.com/terryma/vim-multiple-cursors.git ~/.vim/bundle/vim-multiple-cursors
 fi
 
+if [ ! -d ~/.vim/bundle/vim-smarttabs ]; then
+    git clone https://github.com/dpc/vim-smarttabs.git ~/.vim/bundle/vim-smarttabs
+fi
 cat <<EOF >~/.vimrc
 call pathogen#infect()
 filetype off
