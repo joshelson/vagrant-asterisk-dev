@@ -69,7 +69,6 @@ sudo chmod -R 775 ~/dev/asterisk
 
 sudo pip install git-review
 
-
 mkdir -p ~/dev/asterisk/
 cd ~/dev/asterisk/
 git clone https://gerrit.asterisk.org/testsuite
@@ -87,7 +86,7 @@ cd ~/dev/asterisk/testsuite
 wget https://github.com/SIPp/sipp/archive/v3.4.1.tar.gz
 tar -zxvf v3.4.1.tar.gz
 cd sipp-3.4.1
-./build.sh --with-pcap --with-openssl
+./configure --with-pcap --with-openssl
 sudo make install
 
 echo "* Installing Asterisk"
@@ -96,7 +95,7 @@ sudo chmod 600 /home/vagrant/.ssh/config
 
 cd ~/dev/asterisk
 ssh -T gerrit.asterisk.org  -p 29418 -o StrictHostKeyChecking=no
-git clone -b 13 ssh://asterisk/asterisk asterisk-13
+git clone -b 13 ssh://gerrit.asterisk.org:29418/asterisk asterisk-13
 
 cd asterisk-13
 ssh -T gerrit.asterisk.org  -p 29418 -o StrictHostKeyChecking=no
