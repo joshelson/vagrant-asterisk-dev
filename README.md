@@ -29,7 +29,7 @@ Ensure your SSH key is loaded. Command will be simialr to:
 
 Now you can build the VM:
 
-    $ vagrant up
+    $ vagrant up --provision
 
 And SSH into it:
 
