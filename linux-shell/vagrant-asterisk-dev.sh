@@ -91,16 +91,15 @@ sudo make install
 
 echo "* Installing Asterisk"
 
+gerrituser=$(cat /tmp/gerritusername)
 sudo chmod 600 /home/vagrant/.ssh/config 
 
 cd ~/dev/asterisk
 ssh -T gerrit.asterisk.org  -p 29418 -o StrictHostKeyChecking=no
-git clone -b 13 ssh://gerrit.asterisk.org:29418/asterisk asterisk-13
+git clone -b 13 ssh://$gerrituser@gerrit.asterisk.org:29418/asterisk asterisk-13
 
 cd asterisk-13
 ssh -T gerrit.asterisk.org  -p 29418 -o StrictHostKeyChecking=no
-
-gerrituser=$(cat /tmp/gerritusername)
 
 git remote add gerrit ssh://$gerrituser@gerrit.asterisk.org:29418/asterisk.git
 git review -s
