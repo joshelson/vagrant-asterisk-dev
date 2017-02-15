@@ -118,6 +118,7 @@ make
 
 sudo make install
 sudo make samples
+sudo make config
 
 echo '/usr/lib' | sudo tee --append /etc/ld.so.conf.d/asterisk.conf > /dev/null
 sudo ldconfig
