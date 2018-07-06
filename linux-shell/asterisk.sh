@@ -21,7 +21,8 @@ yum install -y telnet git git-lfs ngrep tcpdump vim nmap fail2ban wget make \
     ncurses-devel svn libuuid-devel libxml2-devel sqlite-devel jansson-devel \
     binutils-devel libsrtp-devel lua lua-devel openssl-devel python-twisted-web \
     python-construct python-devel python-yaml python-twisted libpcap-devel \
-    opus opus-devel unixODBC unixodbc-devel python-twisted-web indent valgrind
+    opus opus-devel unixODBC unixodbc-devel python-twisted-web indent valgrind \
+    libedit-devel
 
 # Setup global bash profile additions
 cat <<EEEEOF >/etc/profile.d/options.sh
