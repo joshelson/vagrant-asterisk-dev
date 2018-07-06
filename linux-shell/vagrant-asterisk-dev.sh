@@ -102,7 +102,7 @@ ssh -T $gerrituser@gerrit.asterisk.org  -p 29418 -o StrictHostKeyChecking=no
 git clone -b master ssh://$gerrituser@gerrit.asterisk.org:29418/asterisk asterisk
 
 cd asterisk
-ssh -T gerrit.asterisk.org  -p 29418 -o StrictHostKeyChecking=no
+ssh -T $gerrituser@gerrit.asterisk.org  -p 29418 -o StrictHostKeyChecking=no
 
 git remote add gerrit ssh://$gerrituser@gerrit.asterisk.org:29418/asterisk.git
 git review -s
