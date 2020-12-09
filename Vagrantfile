@@ -19,7 +19,7 @@ Vagrant.configure(2) do |config|
   config.vbguest.auto_update = true
 
   config.vm.define "asteriskdev" do |asteriskdev|
-    asteriskdev.vm.box = "centos/7"
+    asteriskdev.vm.box = "centos/8"
     asteriskdev.vm.network "private_network", ip: "10.100.100.11"
     asteriskdev.vm.network :forwarded_port, guest: 22, host: 2020, id: "ssh", auto_correct: true 
     asteriskdev.vm.hostname = "asterisk.dev.vm"

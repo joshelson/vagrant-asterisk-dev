@@ -70,11 +70,11 @@ cd $_
 sudo chown -R vagrant ~/dev
 sudo chmod -R 775 ~/dev/asterisk
 
-sudo pip install git-review
+sudo pip3 install git-review
 
 mkdir -p ~/dev/asterisk/
 cd ~/dev/asterisk/
-git clone https://gerrit.asterisk.org/testsuite
+git clone --progress https://gerrit.asterisk.org/testsuite
 
 cd testsuite/asttest
 make
@@ -85,21 +85,25 @@ make update
 cd starpy
 sudo python setup.py install
 
-cd ~/dev/asterisk/testsuite
-wget https://github.com/SIPp/sipp/archive/v3.4.1.tar.gz
-tar -zxvf v3.4.1.tar.gz
-cd sipp-3.4.1
-./configure --with-pcap --with-openssl
-sudo make install
+echo "* Installing SIPp *"
 
-echo "* Installing Asterisk"
+cd ~/dev/asterisk/testsuite
+wget https://github.com/SIPp/sipp/releases/download/v3.6.1/sipp-3.6.1.tar.gz 
+tar -zxvf sipp-3.6.1.tar.gz
+cd sipp-3.6.1
+cmake . -DUSE_GSL=1 -DUSE_PCAP=1 -DUSE_SSL=1 -DUSE_SCTP=1
+make -j4
+sudo make install
+rm -rf sipp-3.6.1*
+
+echo "* Installing Asterisk *"
 
 gerrituser=$(cat /tmp/gerritusername)
 sudo chmod 600 /home/vagrant/.ssh/config 
 
 cd ~/dev/asterisk
 ssh -T $gerrituser@gerrit.asterisk.org  -p 29418 -o StrictHostKeyChecking=no
-git clone -b master ssh://$gerrituser@gerrit.asterisk.org:29418/asterisk asterisk
+git clone --progress -b master ssh://$gerrituser@gerrit.asterisk.org:29418/asterisk asterisk
 
 cd asterisk
 ssh -T $gerrituser@gerrit.asterisk.org  -p 29418 -o StrictHostKeyChecking=no

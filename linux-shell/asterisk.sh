@@ -11,18 +11,24 @@ sed -i 's/\(^SELINUX=\).*/\SELINUX=disabled/' /etc/selinux/config
 if ! yum list installed git-lfs 2> /dev/null; then
   curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.rpm.sh | sudo bash
 fi
-yum install -y epel-release
-yum update -y
-yum install -y telnet git git-lfs ngrep tcpdump vim nmap fail2ban wget make \
-    mlocate rsync screen ntpdate bzip2 iperf yum-fastestmirror man perl \
-    perl-Net-SSLeay bc sysstat iftop socat pigz ntp pwgen net-tools hdparm \
+dnf install -y epel-release
+dnf install dnf-plugins-core
+dnf update -y
+dnf --enablerepo=powertools install -y telnet git git-lfs ngrep tcpdump \
+    vim nmap fail2ban wget make indent valgrind libedit-devel cmake \
+    mlocate rsync screen chrony bzip2 iperf3 man perl perl-Net-SSLeay bc \
+    sysstat iftop socat pigz pwgen net-tools hdparm lksctp-tools lksctp-tools-devel \
     whois crontabs mtr golang htop curl-devel kernel-devel gcc make unzip dkms \
-    gcc-c++ binutils patch gdb autoconf automake libtool xmlstarlet python-pip \
+    gcc-c++ binutils patch gdb autoconf automake libtool xmlstarlet python3-pip \
     ncurses-devel svn libuuid-devel libxml2-devel sqlite-devel jansson-devel \
-    binutils-devel libsrtp-devel lua lua-devel openssl-devel python-twisted-web \
-    python-construct python-devel python-yaml python-twisted libpcap-devel \
-    opus opus-devel unixODBC unixodbc-devel python-twisted-web indent valgrind \
-    libedit-devel
+    binutils-devel libsrtp-devel lua lua-devel openssl-devel python3 \
+    python3-devel python3-yaml python3-twisted libpcap-devel \
+    opus opus-devel unixODBC unixODBC-devel 
+
+# CentOS 8 Not Found:
+# libsrtp-devel lua-devel libpcap-devel unixodbc-devel libedit-devel
+
+pip3 install twisted
 
 # Setup global bash profile additions
 cat <<EEEEOF >/etc/profile.d/options.sh
