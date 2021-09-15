@@ -23,9 +23,10 @@ First, clone the repo:
     $ git clone https://github.com/joshelson/vagrant-asterisk-dev.git
     $ cd vagrant-asterisk-dev
 
-Ensure your SSH key is loaded. Command will be simialr to:
+Ensure your SSH key is loaded. Command will be similar to:
 
     $ ssh-add ~/.ssh/id_rsa
+    $ ssh-agent
 
 Now you can build the VM:
 
